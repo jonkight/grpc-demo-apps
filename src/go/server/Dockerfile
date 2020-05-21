@@ -13,11 +13,9 @@ COPY go.sum .
 RUN go mod download
 
 COPY . .
-
 RUN go build -o main .
 
 WORKDIR /dist
-
 RUN cp /build/main .
 
 # Create the deploy artifact
