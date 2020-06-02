@@ -1,6 +1,6 @@
 name: Build, test, and push Docker image
 
-on: [push, pull_request]
+on: pull_request
 
 jobs:
   vm-job:
@@ -13,5 +13,4 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
           repository: jmk07g/grpc-demo-app-go
           tags: latest
-          path: ./src/go/server
           dockerfile: ./src/go/server/Dockerfile
