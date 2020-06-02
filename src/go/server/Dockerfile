@@ -1,4 +1,4 @@
-# Build the app
+# Test and build the app
 FROM golang:alpine AS builder
 
 ENV GO111MODULE=on \
@@ -13,9 +13,11 @@ COPY go.sum .
 RUN go mod download
 
 COPY . .
+RUN go test -v ./tests/...
 RUN go build -o main .
 
 WORKDIR /dist
+
 RUN cp /build/main .
 
 # Create the deploy artifact
