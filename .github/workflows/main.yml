@@ -1,9 +1,6 @@
 name: Build, test, and push Docker image
 
-on:
-  pull_request:
-    paths:
-      - "src/go/server/*"
+on: pull_request
 
 jobs:
   vm-job:
