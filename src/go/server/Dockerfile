@@ -1,4 +1,4 @@
-# Test and build the app
+# Build and test the app
 FROM golang:alpine AS builder
 
 ENV GO111MODULE=on \
@@ -8,11 +8,12 @@ ENV GO111MODULE=on \
 
 WORKDIR /build
 
-COPY go.mod .
-COPY go.sum .
+COPY go.mod go.sum ./
+
 RUN go mod download
 
 COPY . .
+
 RUN go test -v ./tests/...
 RUN go build -o main .
 
