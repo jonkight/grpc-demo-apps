@@ -14,16 +14,14 @@ RUN go mod download
 
 COPY . .
 
-RUN go test -v ./tests/...
-RUN go build -o main .
-
-WORKDIR /dist
-
-RUN cp /build/main .
+RUN go test -v ./tests/... \
+    && go build -o main . \
+    && mkdir /dist \
+    && cp main /dist
 
 # Create the deploy artifact
 FROM scratch
 
-COPY --from=builder /dist/main /
+COPY --from=builder /dist/main /app
 
-ENTRYPOINT ["/main"]
+ENTRYPOINT ["/app/main"]
