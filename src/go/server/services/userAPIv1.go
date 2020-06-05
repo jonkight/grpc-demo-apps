@@ -12,6 +12,7 @@ import (
 
 type userAPIv1 struct{}
 
+// RegisterUserAPIv1 registers the User API v1 on the passed gRPC server.
 func RegisterUserAPIv1(server *grpc.Server) {
 	api.RegisterUserAPIServer(server, &userAPIv1{})
 }

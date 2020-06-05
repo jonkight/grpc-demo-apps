@@ -1,0 +1,15 @@
+# See http://editorconfig.org
+
+# Top-most EditorConfig file
+root = true
+
+# All files
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# For non-go files, we indent with four spaces. In go files we indent
+# with tabs but still set indent_size to control the github web viewer.
+indent_size = 4
