@@ -16,8 +16,6 @@ import (
 )
 
 const (
-	port    = ":8080"
-	address = "localhost:8080"
 	bufSize = 1024 * 1024
 )
 
