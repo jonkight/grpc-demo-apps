@@ -9,9 +9,10 @@ import (
 	"google.golang.org/grpc/reflection"
 )
 
+// BuildServer builds the internal gRPC server based on the passed arguments.
 func BuildServer(args []string) (*grpc.Server, error) {
 	if len(args) < 1 {
-		return nil, errors.New("Server requires valid services specified to run.")
+		return nil, errors.New("server requires valid services specified to run")
 	}
 	server := grpc.NewServer()
 	for _, service := range args {
@@ -20,9 +21,9 @@ func BuildServer(args []string) (*grpc.Server, error) {
 			services.RegisterUserAPIv1(server)
 		case "leaderboardV1":
 		case "notificationV1":
-			return nil, errors.New(fmt.Sprintf("Service '%s' is not implemented.", service))
+			return nil, fmt.Errorf("service '%s' is not implemented", service)
 		default:
-			return nil, errors.New(fmt.Sprintf("Invalid service name '%s'.", service))
+			return nil, fmt.Errorf("invalid service name '%s'", service)
 		}
 	}
 	reflection.Register(server)
